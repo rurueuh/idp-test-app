@@ -6,8 +6,9 @@ COPY . .
 ARG VERSION=dev
 RUN CGO_ENABLED=0 go build -trimpath -ldflags "-s -w -X main.version=${VERSION}" -o /app .
 
-FROM gcr.io/distroless/static:nonroot
+FROM alpine:3.21
+RUN adduser -D -u 10001 app
 COPY --from=build /app /app
 EXPOSE 8080
-USER nonroot:nonroot
+USER app
 ENTRYPOINT ["/app"]
