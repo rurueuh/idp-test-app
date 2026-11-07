@@ -44,3 +44,4 @@ docker build -t idp-test-app --build-arg VERSION=local .
 docker run -p 8080:8080 idp-test-app
 ```
 # ci trigger test edf254f
+# ci retest 1794081827
