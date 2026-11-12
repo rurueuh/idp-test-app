@@ -6,7 +6,7 @@ COPY . .
 ARG VERSION=dev
 RUN CGO_ENABLED=0 go build -trimpath -ldflags "-s -w -X main.version=${VERSION}" -o /app .
 
-FROM alpine:3.21
+FROM alpine:3.24
 RUN adduser -D -u 10001 app
 COPY --from=build /app /app
 EXPOSE 8080
